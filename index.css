@@ -2,6 +2,7 @@ html, body {
     width: 100%;
     height: 100%;
     font-family: Helvetica;
+    font-size: 14px;
 }
 
 body {
@@ -13,5 +14,7 @@ body {
 }
 
 .submit-button {
-    position: absolute;
+    position: fixed;
+    width: 65px;
+    height: 20px;
 }

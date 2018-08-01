@@ -42,20 +42,73 @@ var buttonHop = function (button) {
     console.log(button.style.left);
 };
 
-// var buttonAnimate = functon (button) {
-    
-// }
+// var buttonAnimate = function () {
+//     $('.submit-button').animate({
+//         left: `${y}%`,
+//         top: `${x}%`
+//         }, 'slow');
+//         x = getRandomInt(0, 100);
+//         y = getRandomInt(0, 100);
+// };
 
 var handleClick = function () {
     insult.textContent = insults[insultIndex]; 
     insultIndex++
 
-    if (insultIndex > 3 && insultIndex < insults.length) {
+    if (insultIndex > 2 && insultIndex < 8) {
         insult.textContent = insults[insultIndex]; 
         buttonHop(button);
         insultIndex++
     }
  
+    if (insultIndex > 8 && insultIndex < insults.length) {
+        insult.textContent = insults[insultIndex];
+        function makeNewPosition(){
+            
+            // Get viewport dimensions (remove the dimension of the div)
+            var h = $(window).height() - 50;
+            var w = $(window).width() - 50;
+            
+            var nh = Math.floor(Math.random() * h);
+            var nw = Math.floor(Math.random() * w);
+            
+            return [nh,nw];    
+            
+        }
+        
+        function animateDiv(){
+            var newq = makeNewPosition();
+            var oldq = $('.submit-button').offset();
+            var speed = calcSpeed([oldq.top, oldq.left], newq);
+            
+            $('.submit-button').animate({ top: newq[0], left: newq[1] }, speed, function(){
+              animateDiv();        
+            });
+            
+        };
+        
+        function calcSpeed(prev, next) {
+            
+            var x = Math.abs(prev[1] - next[1]);
+            var y = Math.abs(prev[0] - next[0]);
+            
+            var greatest = x > y ? x : y;
+            
+            var speedModifier = 0.2;
+        
+            var speed = Math.ceil(greatest/speedModifier);
+        
+            return speed;
+        
+        }
+
+        $(document).ready(function(){
+            animateDiv();
+            
+        });
+        insultIndex++;
+    };
+        
     if (insultIndex > insults.length) {
         alert("Thought you would get rid of me that easily?");
     }
