@@ -25,31 +25,22 @@ var getRandomInt = function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min; 
 };
 
-var x = getRandomInt(0, 100);
-var y = getRandomInt(0, 100);
+x = getRandomInt(0, $(window).width() - 65);
+y = getRandomInt(0, $(window).height() - 20);
 
 button.textContent = "Click me";
 
 
 var buttonHop = function (button) {
-    button.style.top = `${y}%`;
-    button.style.left = `${x}%`;
-    x = getRandomInt(0, 100);
-    y = getRandomInt(0, 100);
+    button.style.top = `${y}px`;
+    button.style.left = `${x}px`;
+    x = getRandomInt(0, $(window).width() - 65);
+    y = getRandomInt(0, $(window).height() - 20);
     console.log(x);
     console.log(y);
     console.log(button.style.top);
     console.log(button.style.left);
 };
-
-// var buttonAnimate = function () {
-//     $('.submit-button').animate({
-//         left: `${y}%`,
-//         top: `${x}%`
-//         }, 'slow');
-//         x = getRandomInt(0, 100);
-//         y = getRandomInt(0, 100);
-// };
 
 var handleClick = function () {
     insult.textContent = insults[insultIndex]; 
@@ -66,8 +57,8 @@ var handleClick = function () {
         function makeNewPosition(){
             
             // Get viewport dimensions (remove the dimension of the div)
-            var h = $(window).height() - 50;
-            var w = $(window).width() - 50;
+            var h = $(window).height() - 20;
+            var w = $(window).width() - 65;
             
             var nh = Math.floor(Math.random() * h);
             var nw = Math.floor(Math.random() * w);
@@ -76,13 +67,13 @@ var handleClick = function () {
             
         }
         
-        function animateDiv(){
+        function animateButton(){
             var newq = makeNewPosition();
             var oldq = $('.submit-button').offset();
             var speed = calcSpeed([oldq.top, oldq.left], newq);
             
             $('.submit-button').animate({ top: newq[0], left: newq[1] }, speed, function(){
-              animateDiv();        
+              animateButton();        
             });
             
         };
@@ -103,7 +94,7 @@ var handleClick = function () {
         }
 
         $(document).ready(function(){
-            animateDiv();
+            animateButton();
             
         });
         insultIndex++;
