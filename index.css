@@ -18,6 +18,11 @@ body {
     justify-content: center;
 }
 
+.insult {
+    text-align: center;
+    font-size: 2em;
+}
+
 .submit-button {
     position: fixed;
     top: 50;

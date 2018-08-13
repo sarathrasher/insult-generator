@@ -141,7 +141,7 @@ var handleClick = function () {
         };
     }
             
-    if (insultIndex > insults.length) {
+    if (insultIndex >= insults.length) {
         alert("Thought you would get rid of me that easily?");
         insultIndex = -1;
         decoyButton.classList.add('hidden');
