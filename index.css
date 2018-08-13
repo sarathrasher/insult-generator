@@ -18,3 +18,13 @@ body {
     width: 65px;
     height: 20px;
 }
+
+.hidden {
+    display: none;
+}
+
+.decoy-button {
+    position: fixed;
+    width: 65px;
+    height: 20px;
+}
