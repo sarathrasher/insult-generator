@@ -1,19 +1,18 @@
 var insults = [
     "Can't believe you thought that would work.",
     "You thought that's how you were supposed to click me?",
+    "I'm over here now.",
     "You can't even click me correctly.",
-    "I can smell you through the screen.",
     "I don't even have eyes and I can tell you're the ugliest person to click me.",
+    "You'll have to do better than that.",
+    "Bet you can't catch me.",
+    "Which one am I?",
     "You're so pathetic.",
-    "Something",
-    "Something else",
-    "Blah blah blah",
-    "Yadda Yadda Yadda",
-    "Blurgh",
-    "Another one",
-    "Final"
+    "I can smell you through the screen.",
+    "I expected more from you.",
+    "You're so disappointing.",
+    "I'm so tired of you."
 ];
-
 var container = document.querySelector('.main');
 var button = document.querySelector('.submit-button');
 var insult = document.querySelector('.insult');
@@ -104,36 +103,33 @@ function animateDecoyButton(){
     var newq = makeNewPosition();
     var oldq = $('.decoy-button').offset();
     var speed = calcSpeed([oldq.top, oldq.left], newq);
-    
     $('.decoy-button').animate({ top: newq[0], left: newq[1] }, speed, function(){
-      animateButton();        
+        animateButton();        
     }); 
 };
 
 var handleClick = function () {
     insult.textContent = insults[insultIndex]; 
-    insultIndex++
+    console.log(insultIndex);
 
-    if (insultIndex > 2 && insultIndex < 5) {
+    if (insultIndex >= 2 && insultIndex < 7) {
         insult.textContent = insults[insultIndex]; 
         buttonHop(button);
-        insultIndex++
     }
  
-    if (insultIndex > 4 && insultIndex < 6) {
+    if (insultIndex >= 6 && insultIndex < 8) {
         insult.textContent = insults[insultIndex];
         $(document).ready(function(){
             animateButton();
-            insultIndex++;
         });
     }
 
-    if (insultIndex > 5 && insultIndex < insults.length) {
+    if (insultIndex >= 7 && insultIndex < insults.length) {
         $(document).ready(function(){
             animateButton('submit-button');
         });
 
-        for (i = 0; i < 5; i++) {
+        for (i = 0; i < insults.length; i++) {
             insult.textContent = insults[insultIndex];
             var decoyButton = document.createElement('button');
             decoyButton.classList.add('decoy-button');
@@ -143,15 +139,14 @@ var handleClick = function () {
                 animateDecoyButton();
             });
         };
-     
-        insultIndex++;
     }
             
     if (insultIndex > insults.length) {
         alert("Thought you would get rid of me that easily?");
-        insultIndex = 0;
+        insultIndex = -1;
+        decoyButton.classList.add('hidden');
     }
-
+    insultIndex++;
 };
 
 button.addEventListener('click', handleClick);
