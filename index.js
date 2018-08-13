@@ -144,10 +144,10 @@ var handleClick = function () {
     if (insultIndex >= insults.length) {
         alert("Thought you would get rid of me that easily?");
         insultIndex = -1;
-        decoyButton.classList.add('hidden');
+        insult.textContent = 'Click to shut me up.'
     }
     insultIndex++;
 };
 
-button.addEventListener('click', handleClick);
+button.addEventListener('mousedown', handleClick);
 
