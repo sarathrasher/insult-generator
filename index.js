@@ -54,8 +54,8 @@ function calcSpeed(prev, next) {
 function makeNewPosition(){
             
     // Get viewport dimensions (remove the dimension of the div)
-    var h = $(window).height() - 20;
-    var w = $(window).width() - 65;
+    var h = $(window).height() - 60;
+    var w = $(window).width() - 50;
     
     var nh = Math.floor(Math.random() * h);
     var nw = Math.floor(Math.random() * w);
@@ -90,8 +90,8 @@ function calcSpeed(prev, next) {
 function makeNewPosition(){
             
     // Get viewport dimensions (remove the dimension of the div)
-    var h = $(window).height() - 20;
-    var w = $(window).width() - 65;
+    var h = $(window).height() - 60;
+    var w = $(window).width() - 50;
     
     var nh = Math.floor(Math.random() * h);
     var nw = Math.floor(Math.random() * w);
@@ -131,9 +131,9 @@ var handleClick = function () {
 
         for (i = 0; i < insults.length; i++) {
             insult.textContent = insults[insultIndex];
-            var decoyButton = document.createElement('button');
+            var decoyButton = document.createElement('img');
             decoyButton.classList.add('decoy-button');
-            decoyButton.textContent = 'Click Me';
+            decoyButton.setAttribute('src', 'mail-chimp-chimp.png');
             container.appendChild(decoyButton);
             $(document).ready(function(){
                 animateDecoyButton();
