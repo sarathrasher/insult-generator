@@ -5,31 +5,63 @@ html, body {
     font-size: 14px;
 }
 
-body {
+.body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .main {
     display: flex;
     flex-direction: column;
+    height: 100%;
+}
+
+.banana-row {
+    display: flex;
+    flex-direction: row;
+    height: 3.5em;
+    flex-shrink: 0;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+.border-image {
+    width: 3.5em;
+    height: 3.5em;
+
+}
+.row-start {
+    justify-content: flex-start;
+    padding-top: 0.5em;
+}
+.row-end {
+    justify-content: flex-end;
+}
+.content {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .insult {
     text-align: center;
     font-size: 2em;
+    margin: 2em;
 }
 
 .submit-button {
     position: fixed;
-    top: 50;
-    left: 50;
-    width: 65px;
-    height: 20px;
-    top: 65%
+    width: 50px;
+    height: 60px;
+    top: 50%;
+}
+
+.game {
+    flex-grow: 1;
 }
 
 .hidden {
@@ -38,6 +70,19 @@ body {
 
 .decoy-button {
     position: fixed;
-    width: 65px;
-    height: 20px;
+    width: 50px;
+    height: 60px;
+}
+
+.rotating {
+    -webkit-animation: rotation 2s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
 }
